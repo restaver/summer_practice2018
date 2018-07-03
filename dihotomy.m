@@ -1,5 +1,9 @@
+left = -1;
+right = 1;
+epsilon = 1e-4;
+
 function d = dihotomy(left, right, epsilon)
-    okno1=figure();
+    okno=figure();
     while ((right-left) > epsilon)
         c = (left + right) / 2;
         if(isrising(c, epsilon) != isrising(right, epsilon))
@@ -8,9 +12,12 @@ function d = dihotomy(left, right, epsilon)
             right = c;
         endif
         %Вычисляем значение функции sin(x).
-        y=sin(c);
+        y=f(c);
         %Выводим график функции sin(x) чёрного цвета.
         plot(c,y,'k');
+        plx = left:right;
+        fx = f(plx);
+        plot(plx,fx);
         hold on;
         %Выводим линии сетки.
         grid on;
@@ -18,11 +25,11 @@ function d = dihotomy(left, right, epsilon)
         title('Plot y=sin(x)');
     endwhile
     %Закрываем окно с дескриптором okno1.
-    delete(okno);
+    %delete(okno);
     d = (left+right)/2;
 endfunction
 
-function f1 = f(x,epsilon)
+function f1 = f(x)
     f1 = sin(x);
 endfunction
 
@@ -35,6 +42,4 @@ function [y] = isrising(x,epsilon)
 endfunction
  
 
-
-epsilon = 1e-4;
-dihotomy (-2, 1, epsilon)
+dihotomy (-1, 1, epsilon)
