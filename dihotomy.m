@@ -9,3 +9,20 @@ function d = dihotomy(left, right, epsilon)
     endwhile
     d = (left+right)/2;
 endfunction
+
+function f1 = f(x,epsilon)
+    f1 = sin(x);
+endfunction
+
+function [y] = isrising(x,epsilon)
+    if (f(x,epsilon)>f((x-epsilon/10000),epsilon))
+        y = 1;
+    else
+        y = -1;
+    endif
+endfunction
+ 
+
+
+epsilon = 1e-4;
+dihotomy (-2, 1, epsilon)
