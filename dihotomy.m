@@ -15,7 +15,7 @@ function d = dihotomy(left, right, epsilon)
         y=f(c);
         %Выводим график функции sin(x) чёрного цвета.
         plot(c,y,'k');
-        plx = left:right;
+        plx = left:epsilon:right;
         fx = f(plx);
         plot(plx,fx);
         hold on;
